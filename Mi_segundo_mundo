@@ -1,0 +1,16 @@
+"""Descripcion: El mundo requiere que el robot realice una caminata
+de 5 unidades en cualquiera de su posicion inicial.
+    Autor: Sebastian Varon
+    Fecha: 29/07/2019
+   """ 
+#print("Hola soy Reeborg's\n¡Bienvenido a mi mundo!\n ¡Comenzare mi misión!")
+def walk(): #Caminata para 5x5 
+    if (front_is_clear()):
+        repeat 4:
+            move()
+    if (wall_in_front()):
+        turn_left()
+        if (front_is_clear()):
+            repeat 4:
+                move()   
+walk()#llamar funcion caminar   
