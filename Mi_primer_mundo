@@ -1,0 +1,20 @@
+"""Descripcion: El mundo requiere que el robot se mueva hasta la posicion donde se encuentra 
+    el objeto, el robot recoga el objeto (manzana) y 
+    deje un objeto (banana) posteriormente debe moverse 
+    hasta la posicion de la meta.
+    Autor: ©Sebastian Varon
+    Fecha: 29/07/2019
+   """ 
+print("Hola soy Reeborg's\n¡Bienvenido a mi mundo!\n ¡Comenzare mi misión!")
+repeat 4: #el robot se movera 4 posiciones 
+    move()
+#pause()
+take()#el robot recogera el objeto
+#pause()
+put("banana")#el robot dejara un objeto
+#pause()
+repeat 2:#el robot girara 2 veces a la izquierda
+    turn_left()
+#pause()
+repeat 4: #el robot se movera 4 posiciones 
+    move()
