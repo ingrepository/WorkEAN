@@ -1,0 +1,51 @@
+
+energia=7
+cont=0
+manzana=0
+tulipan=0
+medicina=0
+goloso=0
+while not wall_in_front():
+    if energia >= 1:
+        print("tulipan:",tulipan)
+        move()
+        energia=energia-tulipan
+        energia=energia-1
+        cont=cont+1
+        print("energia actual:",energia)
+        if object_here("apple"):
+            print("hay manzana")
+            manzana=manzana+1
+            take("apple")
+            if energia<=21:
+                energia=energia+7
+                print("energia sumada:",energia)
+        if object_here("tulip"):
+            print("hay tulipan")
+            tulipan=tulipan+1
+            take("tulip")
+        if object_here("triangle"):
+            print("hay medicina")
+            tulipan=0
+            take("triangle")
+        if object_here("token"):
+            print("hay goloso")
+            goloso=1+1
+            take("token")
+            while manzana>0:
+                manzana=manzana-1
+                put("apple")
+                print("deje",manzana,"manzana")
+print("manzana:",manzana)       
+print("pasos:",cont)
+print("energia:",energia)
+
+manzana='apple'
+print(manzana)
+energia=0
+
+
+      
+
+      
+      
