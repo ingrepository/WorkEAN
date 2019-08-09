@@ -1,0 +1,45 @@
+
+energia=7
+cont=0
+manzana=0
+tulipan=0
+medicina=0
+goloso=0
+while not wall_in_front():
+    if energia >= 1:
+        move()
+        energia=energia-1
+        cont=cont+1
+        if object_here("apple"):
+            print("hay manzana")
+            manzana=manzana+1
+            take("apple")
+            if energia<=21:
+                energia=energia+7
+                print(energia)
+        if object_here("tulip"):
+            print("hay tulipan")
+            tulipan=1+1
+            take("tulip")
+        if object_here("triangle"):
+            print("hay medicina")
+            medicina=1+1
+            take("triangle")
+        if object_here("token"):
+            print("hay goloso")
+            goloso=1+1
+            take("token")
+            if manzana>=1:
+                repeat manzana:
+                    put("apple")
+                print(manzana)
+print("manzana:",manzana)       
+print("pasos:",cont)
+print("energia:",energia)
+
+manzana='apple'
+print(manzana)
+energia=0
+
+
+      
