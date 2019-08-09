@@ -2,6 +2,9 @@
 energia=7
 cont=0
 manzana=0
+"""
+poner variable que sume a tulipan
+"""
 tulipan=0
 medicina=0
 goloso=0
@@ -24,6 +27,11 @@ while not wall_in_front():
             print("hay tulipan")
             tulipan=tulipan+1
             take("tulip")
+            """
+            if tulipan >1:
+            x=x+1
+poner variable que (x) sume a tulipan
+"""
         if object_here("triangle"):
             print("hay medicina")
             tulipan=0
