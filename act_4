@@ -1,0 +1,63 @@
+"""
+Descripción:
+Defina una función que dados dos valores enteros x, y, 
+tal que 1<x<=y<=10, con Reeborg en (1,1) con dirección Norte;
+opere de la siguiente manera:
+Desplace a Reeborg hasta la coordenada (x,y)
+Ponga una estrella en dicha coordenada. Debe tener el objeto 
+antes de iniciar la ejecución.
+Vuelva a la coordenada (1,1)
+Informe la distancia entre (1,1) y (x,y). 
+Recuerde documentar su código fuente: Descripción de la 
+actividad, los autores y la fecha. Si define funciones auxiliares, 
+recuerde describir qué hace la función, la precondición y la poscondición.
+"""
+"""
+Funcionalidad:
+Pre:dos valores enteros x, y, tal que 1<x<=y<=10,
+
+Defina una función que dados dos valores enteros x, y, 
+tal que 1<x<=y<=10, con Reeborg en (1,1) con dirección Norte;
+opere de la siguiente manera:
+Desplace a Reeborg hasta la coordenada (x,y)
+Ponga una estrella en dicha coordenada. Debe tener el objeto 
+antes de iniciar la ejecución.
+Vuelva a la coordenada (1,1)
+Informe la distancia entre (1,1) y (x,y). 
+Recuerde documentar su código fuente: Descripción de la 
+actividad, los autores y la fecha. Si define funciones auxiliares, 
+recuerde describir qué hace la función, la precondición y la poscondición.
+"""
+#randrage importa numeros enteros
+from random import randrange
+def repeat(n):
+    for i in range(n):
+        move()
+def cal_distancia(x,y):
+    if 1<x<=y<=10:
+        #Para llevar a pontencio usamos **   
+        distancia=((((x-1)**2)+((y-1)**2))** 0.5)
+        print(f"La distancia entre los puntos ({x},1) y ({y},1)\nEs aproximadamente: {distancia} unidades")
+def desplazamiento (x,y):
+    print( type(x) )
+
+def repeat(fn, n):
+    for i in range(n):
+        fn()
+def is_facing_south():
+    turn_left()
+    turn_left()
+    remember = is_facing_north()
+    turn_left()
+    turn_left()
+    return remember
+      
+#Generramos coordenas aleatorias
+cord_x=randrange(2, 10)
+cord_y=randrange(2, 10)
+print("Numero aleatorio para X₂:",cord_x)
+print("Numero aleatorio para Y₂:",cord_y)
+is_facing_south()
+repeat(move,2)
+cal_distancia(cord_x,cord_y)
+desplazamiento(cord_x,cord_y)
