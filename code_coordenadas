@@ -1,0 +1,79 @@
+"""
+Descripción:La condición de la coordenada 1<x<=y<=10, con Reeborg en (1,1) 
+con dirección Norte; opere de la siguiente manera:
+Desplace a Reeborg hasta la coordenada (x,y)
+Ponga una estrella en dicha coordenada. Debe tener el objeto 
+antes de iniciar la ejecución.
+Vuelva a la coordenada (1,1)
+Informe la distancia entre (1,1) y (x,y). 
+"""
+#randrage importa numeros enteros
+from random import randrange
+"""
+Funcionalidad: Practicidad para el uso del repeat.
+Pre:Tener una acción(move,turn_left,etc) y numero de repeticiones.
+Pos:Realiza la acción el numero de veces solicitado.
+"""
+def repeat(fn, n): #Optimizar funcionamiento de repeat
+    for i in range(n):
+        fn()
+"""
+Funcionalidad: Calcula la distancia entre dos puntos.
+Pre:Cumplir con la condicion 1<x<=y<=10.
+Pos:Realiza la operacion matematica e imprime el resultado.
+"""
+def cal_distancia(x,y):
+    if 1<x<=y<=10:
+        #Para llevar a pontencio usamos **   
+        distancia=((((x-1)**2)+((y-1)**2))** 0.5)
+        print(f"La distancia entre los puntos (1,1) y ({x},{y})\nEs aproximadamente: {distancia} unidades")
+"""
+Funcionalidad:Reeborg realiza un desplazamiento.
+Pre:Estar sentido norte, tener unas coordenadas y un objeto.
+Pos:Realiza el desplazamiento deja el objeto y vulve a su punto de partida.
+"""
+def desplazamiento (x,y):
+    print("Desplazandome...🏃👣")
+    repeat(move,y-1)
+    repeat(turn_left,3)
+    repeat(move,x-1)
+    repeat(turn_left,3)
+    put()
+    print("He dejado el objeto ⭐")
+    print("Volviendo al punto de partida...🏁")
+    repeat(move,y-1)
+    repeat(turn_left,3)
+    repeat(move,x-1)
+"""
+Funcionamiento:Genera numero entero aleatorio.
+Pre:Las coordenadas no cumplen con la condición.
+Pos:Las coordenadas cumplen con la condición.
+"""
+def aletorio():
+    global cord_x,cord_y
+    while not 1<cord_x<=cord_y<=10:
+        cord_x=randrange(2, 10)
+        cord_y=randrange(2, 10)
+        print(f"X:{cord_x} Y:{cord_y}")
+    
+#Generamos coordenas aleatorias
+print("✪Bienvenido✪\nReeborg debera desplazarce a una coordenada que cumpla la\nsiguiente condición:\n1<x<=y<=10\nSe procedera a generar aleatoriamente las coordenadas:")
+cord_x=randrange(2, 10)
+cord_y=randrange(2, 10)
+print("Numero aleatorio para X₂:",cord_x)
+print("Numero aleatorio para Y₂:",cord_y)
+if not 1<cord_x<=cord_y<=10:
+    print("Rayos 😭 Las coordenadas no cumplen con la condición")
+    print("Se procedera a cambiar aleatoriamente las coordenadas:")
+    aletorio()
+    if 1<cord_x<=cord_y<=10:
+        print("¡Genial! 🤩 Las nuevas coordenadas cumplen con la condición")
+        print("Se procedera a realizar el desplazamiento")
+        desplazamiento (cord_x,cord_y)
+        cal_distancia(cord_x,cord_y)
+else:
+    print("¡Genial! 🤩 Las coordenadas cumplen con la condición")
+    print("Se procedera a realizar el desplazamiento")
+    desplazamiento (cord_x,cord_y)
+    cal_distancia(cord_x,cord_y)
+    
