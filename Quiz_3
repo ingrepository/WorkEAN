@@ -1,0 +1,38 @@
+"""
+Autor:Sebastian Varon
+"""
+"""
+Funcion:Reeborg recoja el objeto y lo clasifique. 
+Si es residuo de comida, imprime por pantalla "Para compostaje" y cualquier otro elemento, imprime "Para reciclar".  
+"""
+def reciclar():
+    while object_here() ==True:
+        if object_here("apple") or object_here("banana") or object_here("strawberry") or object_here("carrot"): 
+            take("apple" or "banana")
+            return False
+        if object_here("token") or object_here("triangle") or object_here("square") or object_here("beeper"):
+            take()
+            return True
+"""
+Funcion: que desplaza a reeborg hasta la posición (1,1).
+"""
+
+def volver_a_casa():
+    repeat 2:
+        turn_left()
+    while front_is_clear():
+        move()
+"""
+Funcion:que desplaza a Reeborg hasta el primer elemento que encuentre.
+"""
+def bucar_basura():
+    while front_is_clear():
+        move()
+        ob=object_here()
+        obb=len(ob)
+        if reciclar() == False:
+            print("Para compostaje")
+        else:
+            print("Para reciclar")
+    volver_a_casa()
+bucar_basura()
