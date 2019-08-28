@@ -1,0 +1,45 @@
+
+"""
+Pre: Reeborg mira este 
+Pos: Reeborg sube el escalon
+"""
+def turn_right():
+    repeat 3:
+        turn_left()
+def subir_escalon():
+    turn_left()
+    move()
+    turn_right()
+    move()
+def recolectar(var):
+    while object_here() or front_is_clear():
+        if object_here("daisy"): 
+            while len(object_here()) > 0:
+                var=var+1
+                print("Encontre una margarita +1")
+                print(var)
+                take("daisy") 
+        if object_here("beeper"):
+            while len(object_here()) > 0:
+                var=var*2
+                print("Encontre una beeper")
+                print(var)
+                take("beeper") 
+        if object_here("token"):
+             while len(object_here()) > 0:
+                var=var-5
+                print("Encontre una beeper")
+                print(var)
+                take("token") 
+        if front_is_clear():
+            move()
+    return var
+        
+total=0
+repeat 2:
+    subir_escalon() 
+    total=total+recolectar(total)
+    print(total)
+print(total)
+
+#recolectar
