@@ -1,0 +1,44 @@
+
+def volver_a_casa():
+    repeat 2:
+        turn_left()
+    while front_is_clear():
+        move()
+
+def caminata():
+    contador=0
+    obb=[]
+    obj=[]
+    cont=[]
+    while front_is_clear():
+        if object_here("leaf"):
+            if "leaf" not in obj:
+                obj.append("leaf")
+                print(obj)
+                while object_here():
+                    contador=contador+1
+                    take("leaf")
+                cont.append(contador)
+                print(cont)
+            else:  
+                while object_here():
+                    contador=contador+1
+                    take("leaf")
+                cont[cont.index(contador)]=contador
+                print(cont)
+        contador=0
+        move() 
+     
+caminata()
+"""
+ ob=object_here()              
+            lista=[]
+            for obj_name in (ob):
+                if object_here("leaf"):
+                    print("He encontrado un/a:",obj_name)
+                    obj.append(obj_name)
+                    print(obj)
+                    leaf=leaf+1
+                    cont.append(leaf)
+                    print(cont) 
+"""
