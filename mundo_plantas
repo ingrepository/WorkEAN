@@ -42,3 +42,71 @@ caminata()
                     cont.append(leaf)
                     print(cont) 
 """
+def volver_a_casa():
+    repeat 2:
+        turn_left()
+    while front_is_clear():
+        move()
+def anadir_elemento(t,e):
+    lista=list(t)
+    print ("agregado: ",e)
+    lista.append(e)
+    t=tuple(lista)
+    return t
+def union(paises):
+    print("Paises y su poblacion")
+    for x in range(len(paises)):
+        print(paises[x][0],paises[x][1])
+def caminata():
+    contador=0
+    obj=[]
+    contenido=[]
+    while front_is_clear():
+        while object_here():
+            if object_here("leaf"):
+                if "leaf" not in obj:
+                    leaf=0
+                    leaft="leaf"
+                    obj.append(leaft)
+                while object_here():
+                    leaf=leaf+1
+                    take("leaf")
+                    print(leaf)
+            
+            break    
+            contador=0
+        move()
+    print(leaft,leaf)
+    contenido.append()
+
+l=[]     
+r=("tr",9)
+l.append(r)
+print(l)
+b = (1,)  # Es una tupla
+print(type(b))
+
+
+
+res= [("a",4),("a",7),("b",3),("c",43),("b",43)]
+result={}
+ 
+for i in res:
+    if i[0] in result:
+        result[i[0]]+=i[1]
+    else:
+        result[i[0]]=i[1]
+ 
+print(result)
+"""
+ ob=object_here()              
+            lista=[]
+            for obj_name in (ob):
+                if object_here("leaf"):
+                    print("He encontrado un/a:",obj_name)
+                    obj.append(obj_name)
+                    print(obj)
+                    leaf=leaf+1
+                    cont.append(leaf)
+                    print(cont) 
+"""
