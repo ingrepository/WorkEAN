@@ -1,0 +1,54 @@
+"""
+Descripcion:
+subir_en_L(y, x) : Reeborg se mueve y casillas al Norte y luego x casillas al Este.
+Para usar esta función, se requiere que Reeborg, mire al Este y no haya obstáculos 
+en su recorrido.
+"""
+​
+def subir_en_L(y, x):
+        turn_left()
+        for i in range (y):
+            move()
+        repeat 3:
+            turn_left()
+        for i in range (x):
+            move()           
+ 
+"""
+Descripcion:
+rapel(): Reeborg avanza, gira, baja la montaña y gira nuevamente para mirar al Este.
+Para usar esta función, se requiere que Reeborg mire al Este y no haya obstáculos 
+en su recorrido.  
+​
+"""
+def rapel():
+    move()
+    repeat 3:
+        turn_left()
+    while front_is_clear():
+        move()
+    turn_left()
+​
+​
+"""
+Descripcion:
+recolectar_manzanas(): Toma cuantas manzanas haya en la casilla actual. 
+Retorna el número de manzanas recolectadas. No tiene Precondición.
+"""
+def recolectar_manzanas():
+    cont=0
+    while object_here():        
+        take("apple")
+        cont=cont+1
+    return cont
+​
+#Fig 1
+move()
+recolectar_manzanas()
+subir_en_L(2, 2)
+rapel()       
+recolectar_manzanas()
+subir_en_L(2, 2)
+rapel()
+recolectar_manzanas()
+subir_en_L(2, 2)
