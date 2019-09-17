@@ -1,0 +1,103 @@
+"""
+Descripción:
+Reeborg debe hacer un recorrido en zigzag para este esenario
+esta adaptado par aun mundo 10x10, de tal forma que se definan 
+las siguientes funciones/procedimientos:
+Reeborg debe recolectar todas las bananas de su mundo. 
+Infortunadamente los racimos de plátano no fueron sembrados en 
+orden y cada racimo puede tener desde 1 hasta 50 bananas.
+Una vez sean recolectados los racimos de bananas, debemos calcular el 
+valor total de la cosecha. Si cada banana se vende a 100 pesos, 
+¿cuál es el valor de la cosecha?. 
+Defina una función que reciba una lista de enteros y retorne 
+el cálculo correspondiente.
+Si quisiéramos hacer descuentos por racimo de la siguiente manera:
+racimo grandes: Más de 10 bananos, el racimo se vende a $1000.
+racimos pequeños: Más de 3 y hasta 10 bananos,  el racimo se vende a $500.
+por unidad: cada banano vale $100.
+El descuento de efectua automaticamente al momento de recolectar el racimo
+de bananas
+Autor: Sebastian Varon
+Fecha: 17/09/2019
+"""
+"""
+Descripcion: Calcular el valor total de la cosecha en pesos.
+Pre: Tener una lista con los valores (racimos)
+Pos: Retorna e imprime el valor total de la cosecha.
+"""
+def calculo_cosecha(lista):
+    laSuma = 0
+    for i in lista:
+        laSuma = laSuma +i
+    print("Total cosecha en pesos:$",laSuma*100)
+    return laSuma*100
+"""
+Descripcion: Recolecta todo el racimo de bananas.
+Pre: Puede haber o no bananas.
+Pos: Retorna el numero de bananas que hay en el racimo con 
+los ajustes para un descuento.
+"""
+def encuentra_bananas():
+    cont=0
+    while object_here():
+        if object_here("banana"):
+            take()
+            cont=cont+1
+    if 3<cont<=10:
+        cont=5
+    if cont>10:
+        cont=10    
+    return cont
+"""
+Descripcion: Reeborg recorre sentido Este.
+Pre: Reeborg sentido Este.
+Pos: Reeborg recorre y recolecta bananas y retorna una 
+lista con los valores. Reeborg mira Oeste
+"""
+def derecha(lista):
+    while front_is_clear():
+        lista.append(encuentra_bananas())
+        move()
+    turn_left()
+    if not front_is_clear():
+        return lista
+    move()
+    lista.append(encuentra_bananas())
+    turn_left()
+    return lista
+"""
+Descripcion: Reeborg recorre sentido Oeste.
+Pre: Reeborg sentido Oeste.
+Pos: Reeborg recorre y recolecta bananas y retorna una 
+lista con los valores. Reeborg mira Este
+"""
+def izquierda(lista):
+    while front_is_clear():
+        lista.append(encuentra_bananas())
+        move()
+    repeat 3:
+        turn_left()
+    if not front_is_clear():
+        return lista
+    move()
+    lista.append(encuentra_bananas())
+    repeat 3:
+        turn_left()
+    return lista
+"""
+Descripcion: Reeborg recolecta bananas.
+Pre: Reeborg sentido Este.
+Pos: Reeborg recorre el mundo y recolecta bananas y retorna una 
+lista con los valores.
+"""
+def recolectar_bananas():
+    list=[]
+    repeat 5:
+        derecha(list)
+        izquierda(list)    
+    return list
+
+calculo_cosecha(recolectar_bananas())
+
+    
+    
